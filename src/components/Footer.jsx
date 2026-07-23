@@ -32,7 +32,7 @@ export default function Footer() {
           <div>
             <h4 className="footer__title">{t('footer.comp')}</h4>
             <div className="footer__links">
-              <Link to="/about" className="footer__link">{t('footer.c1')}</Link>
+              <a href="/#about" className="footer__link">{t('footer.c1')}</a>
               <Link to="/contact" className="footer__link">{t('footer.c3')}</Link>
               <Link to="/privacy" className="footer__link">{t('footer.l1')}</Link>
               <Link to="/terms" className="footer__link">{t('footer.l2')}</Link>

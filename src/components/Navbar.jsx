@@ -16,7 +16,7 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t('nav.home'),        href: '#home' },
-    { label: t('nav.about'),       href: 'about' },
+    { label: t('nav.about'),       href: '#about' },
     { label: t('nav.features'),   href: '#features' },
     { label: t('nav.howItWorks'), href: '#how-it-works' },
     { label: t('nav.diseases'),   href: '#diseases' },
@@ -39,7 +39,7 @@ export default function Navbar() {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
       
-      const sections = ['home', 'features', 'how-it-works', 'diseases', 'testimonials'];
+      const sections = ['home', 'about', 'features', 'how-it-works', 'diseases', 'testimonials'];
       let current = '';
       
       sections.forEach((section) => {
