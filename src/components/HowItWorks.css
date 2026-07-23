@@ -1,0 +1,80 @@
+.hiw {
+  background: var(--bg-1);
+}
+
+.hiw__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.hiw__steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.hiw__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--bounce);
+}
+
+.hiw__step:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.1);
+}
+
+.hiw__step-num {
+  position: absolute;
+  top: -20px;
+  right: -10px;
+  font-size: 120px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  font-family: var(--font-heading);
+}
+
+.hiw__step-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+}
+
+.hiw__step-content h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--text-1);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.hiw__step-content p {
+  color: var(--text-sub);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hiw__steps {
+    grid-template-columns: 1fr;
+  }
+}
