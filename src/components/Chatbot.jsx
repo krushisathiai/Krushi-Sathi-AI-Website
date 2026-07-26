@@ -50,179 +50,247 @@ export default function Chatbot() {
 
   function getWelcomeMessage(l) {
     if (l === 'hi') {
-      return "नमस्कार! 👋 मैं कृषि साथी AI असिस्टेंट हूँ। आप मुझसे फसलों के रोग, मौसम, उर्वरक और Krushi Sathi ऐप के बारे में कुछ भी पूछ सकते हैं!";
+      return "नमस्कार किसान भाई! 🌾 मैं कृषि साथी AI एक्सपर्ट हूँ। आप मुझसे टमाटर, कपास, प्याज, सोयाबीन या किसी भी फसल के रोग, कीट, फफूंद, खाद (Fertilizer) और छिड़काव की दवाइयों के बारे में सवाल पूछ सकते हैं!";
     } else if (l === 'mr') {
-      return "नमस्कार बळीराजा! 👋 मी कृषी साथी AI असिस्टंट आहे. पिकांवरील रोग, खत व्यवस्थापन, हवामान आणि Krushi Sathi अ‍ॅपबद्दल तुम्ही मला कोणतीही माहिती विचारू शकता!";
+      return "नमस्कार बळीराजा! 🌾 मी कृषी साथी AI एक्सपर्ट आहे. टोमॅटो, कापूस, कांदा, सोयाबीन, ऊस किंवा कोणत्याही पिकावरील रोग, कीड, औषधांची फवारणी आणि खत व्यवस्थापनाबद्दल काहीही विचारू शकता!";
     } else {
-      return "Hello farmer! 👋 I am Krushi Sathi AI Assistant. Ask me anything about crop disease detection, weather, fertilizers, or Krushi Sathi App!";
+      return "Hello farmer! 🌾 I am Krushi Sathi AI Expert. Ask me anything about crop diseases, pest control, chemical/organic spraying, fertilizer dosage, weather, or farming advice!";
     }
   }
 
   function getSuggestions(l) {
     if (l === 'hi') {
       return [
-        "🌾 फसल का रोग कैसे पहचानें?",
-        "🌦️ मौसम और सिंचाई सलाह",
-        "💡 उर्वरक (Fertilizer) गाइड",
-        "💰 सब्सक्रिप्शन और प्राइजिंग",
-        "📱 ऐप डाउनलोड कैसे करें?"
+        "🍅 टमाटर में करपा व बोकड्या रोग का इलाज?",
+        "🌱 कपास में गुलाबी बोंडअळी व सफेद मक्खी?",
+        "🧅 प्याज में थ्रिप्स व जांघिया करपा फवारणी?",
+        "💡 फसल के लिए सबसे अच्छी खाद (Fertilizers)?",
+        "📸 AI डिसीज स्कैनर का उपयोग कैसे करें?"
       ];
     } else if (l === 'mr') {
       return [
-        "🌾 पिकांवरील रोग कसे ओळखावे?",
-        "🌦️ हवामान व पाणी व्यवस्थापन",
-        "💡 पिकांसाठी योग्य खते (Fertilizers)",
-        "💰 प्लॅन व दर (Pricing)",
-        "📱 कृषी साथी अ‍ॅप डाऊनलोड"
+        "🍅 टोमॅटोवरील करपा व बोकड्या रोगावर उपाय?",
+        "🌱 कापसातील गुलाबी बोंडअळी व पांढरी माशी?",
+        "🧅 कांद्यावरील थ्रिप्स व जांभळा करपा फवारणी?",
+        "💡 पिकांच्या वाढीसाठी योग्य खते (Fertilizers)?",
+        "📸 AI रोग स्कॅनर कसा वापरावा?"
       ];
     } else {
       return [
-        "🌾 How to scan crop disease?",
-        "🌦️ Weather & irrigation advice",
-        "💡 Fertilizer recommendation",
-        "💰 Pricing & subscription plans",
-        "📱 How to download app?"
+        "🍅 Remedy for Tomato Blight & Leaf Curl?",
+        "🌱 Pink Bollworm control in Cotton?",
+        "🧅 Onion Thrips & Purple Blotch spray?",
+        "💡 Optimal Fertilizer (NPK) Schedule?",
+        "📸 How to use AI Disease Scanner?"
       ];
     }
   }
 
-  // AI Knowledge Engine for Farming queries
+  // ─── ADVANCED AI AGRICULTURE KNOWLEDGE ENGINE ─────────────────────────────
   const getAIResponse = (query, currentLang) => {
     const q = query.toLowerCase().trim();
 
-    // 1. Disease Scan & Detection
-    if (q.includes('disease') || q.includes('रोग') || q.includes('पिकांवरील') || q.includes('फसल') || q.includes('पाना') || q.includes('कीड') || q.includes('कीड़ा') || q.includes('पत्ती') || q.includes('scan')) {
-      if (currentLang === 'hi') {
+    // Language Auto-Detection based on Devanagari script or text
+    let detectedLang = currentLang;
+    if (/[\u0900-\u097F]/.test(query)) {
+      // Devanagari script detected: check Marathi specific words vs Hindi
+      if (q.includes('आहे') || q.includes('काही') || q.includes('पिका') || q.includes('सल्ला') || q.includes('उपाय') || q.includes('करावा') || q.includes('कांदा') || q.includes('फवारा')) {
+        detectedLang = 'mr';
+      } else if (q.includes('क्या') || q.includes('कैसे') || q.includes('दवा') || q.includes('उपचार') || q.includes('करें') || q.includes('किसान')) {
+        detectedLang = 'hi';
+      }
+    }
+
+    // 1. TOMATO / टोमॅटो / टमाटर
+    if (q.includes('tomato') || q.includes('टोमॅटो') || q.includes('टमाटर')) {
+      if (q.includes('blight') || q.includes('करपा') || q.includes('डाग') || q.includes('मुरडा') || q.includes('curl') || q.includes('बोकड्या') || q.includes('रोग') || q.includes('रोग')) {
+        if (detectedLang === 'hi') {
+          return {
+            text: "🍅 **टमाटर रोग व उपचार (Tomato Advisory):**\n\n1. **अगेती/पिछेती करपा (Blight):** मैंकोजेब (Mancozeb 75% WP) 2.5g/लीटर या कॉपर ऑक्सीक्लोराइड 3g/लीटर का छिड़काव करें।\n2. **लीफ कर्ल (बोकड्या):** रसचूसक कीटों के लिए एसिटामिप्रिड (Acetamiprid 20% SP) 0.5g/लीटर + स्टिकर मिलाएं।\n3. **फलों की सड़न:** कैल्शियम नाइट्रेट + बोरॉन का छिड़काव करें।",
+            actions: [{ label: '📸 AI पत्ती स्कैनर से जांचें', href: '#diseases' }]
+          };
+        } else if (detectedLang === 'mr') {
+          return {
+            text: "🍅 **टोमॅटो रोग व फवारणी नियोजन:**\n\n1. **करपा रोग (Blight):** मँकोझेब (Mancozeb 75% WP) २.५ ग्रॅम/लीटर किंवा कॉपर ऑक्सिक्लोराईड ३ ग्रॅम/लीटर फवारावे.\n2. **बोकड्या / चुरडा-मुरडा (Leaf Curl):** असिटामिप्रिड (Acetamiprid 20% SP) ०.५ ग्रॅम/लीटर + सिलिकॉन स्टीकर फवारावा.\n3. **फळ सड / क्रॅकिंग:** कॅल्शियम नायट्रेट + बोरॉन ची फवारणी करावी.",
+            actions: [{ label: '📸 AI पानांचा फोटो काढून रोगाची तपासणी करा', href: '#diseases' }]
+          };
+        } else {
+          return {
+            text: "🍅 **Tomato Crop Protection Advisory:**\n\n1. **Blight Disease:** Spray Mancozeb 75% WP @ 2.5g/L or Copper Oxychloride @ 3g/L.\n2. **Leaf Curl (Whitefly Vector):** Spray Acetamiprid 20% SP @ 0.5g/L with silicon sticker.\n3. **Fruit Rot / Cracking:** Apply Calcium Nitrate + Boron foliar spray.",
+            actions: [{ label: '📸 Scan Tomato Leaf with AI', href: '#diseases' }]
+          };
+        }
+      }
+    }
+
+    // 2. COTTON / कापूस / कपास
+    if (q.includes('cotton') || q.includes('कापूस') || q.includes('कपास') || q.includes('बोंडअळी') || q.includes('माशी')) {
+      if (detectedLang === 'hi') {
         return {
-          text: "Krushi Sathi AI डिसीज स्कैनर आपकी फसल के पत्तों की फोटो देखकर 98% सटीकता के साथ बीमारी पहचानता है और तुरंत दवाइयों का नाम व सही छिड़काव (Spraying) बताता है।",
-          actions: [{ label: 'रोग स्कैनर देखें', href: '#diseases' }]
+          text: "🌱 **कपास कीट व रोग नियंत्रण (Cotton Advisory):**\n\n1. **गुलाबी बोंडअळी (Pink Bollworm):** खेत में 5 फेरोमोन ट्रैप (Pheromone Traps) प्रति एकड़ लगाएं। प्रोफेनोफॉस 50% EC 2ml/लीटर का छिड़काव करें।\n2. **सफेद मक्खी व मावा:** अज़ाडिरैक्टिन (नीम तेल 10000 ppm) 2ml/लीटर या इमिडाक्लोप्रिड 0.5ml/लीटर फव्वारा करें।",
+          actions: [{ label: 'कीट गाइड देखें', href: '#diseases' }]
         };
-      } else if (currentLang === 'mr') {
+      } else if (detectedLang === 'mr') {
         return {
-          text: "Krushi Sathi AI डिजीज स्कॅनरद्वारे तुम्ही पिकाच्या पानांचा फोटो काढून ९८% अचूकतेने रोगाचे नाव, कारणे आणि योग्य औषधांची फवारणी (Spraying guide) त्वरित मिळवू शकता.",
-          actions: [{ label: 'रोग स्कॅनर वापरा', href: '#diseases' }]
+          text: "🌱 **कापूस पीक संरक्षण सल्ला:**\n\n1. **गुलाबी बोंडअळी नियंत्रण:** प्रति एकरी ५ कामगंध सापळे (Pheromone Traps) लावा. प्रादुर्भाव वाढल्यास प्रोफेनोफॉस ५०% EC २ मिली/लीटर फवारावे.\n2. **पांढरी माशी व मावा:** कडुनिंब अर्क (Neem Oil 10000 ppm) २ मिली/लीटर किंवा असिटामिप्रिड ०.५ ग्रॅम/लीटर फवारा.",
+          actions: [{ label: 'कीड व रोग मार्गदर्शिका', href: '#diseases' }]
         };
       } else {
         return {
-          text: "Krushi Sathi AI Disease Scanner analyzes leaf photos with 98% accuracy to identify crop diseases instantly and suggest precise treatments and spray timings.",
-          actions: [{ label: 'Try Disease Scanner', href: '#diseases' }]
+          text: "🌱 **Cotton Crop Protection Advisory:**\n\n1. **Pink Bollworm:** Install 5 Pheromone Traps per acre. Spray Profenofos 50% EC @ 2ml/L water if infestation exceeds ETL.\n2. **Whitefly & Aphids:** Spray Neem Oil (10,000 ppm) @ 2ml/L or Acetamiprid 20% SP @ 0.5g/L.",
+          actions: [{ label: 'View Pest Guide', href: '#diseases' }]
         };
       }
     }
 
-    // 2. Weather & Irrigation
-    if (q.includes('weather') || q.includes('हवामान') || q.includes('मौसम') || q.includes('पाऊस') || q.includes('बारिश') || q.includes('पाणी') || q.includes('पानी') || q.includes('rain')) {
-      if (currentLang === 'hi') {
+    // 3. ONION / कांदा / प्याज
+    if (q.includes('onion') || q.includes('कांदा') || q.includes('प्याज') || q.includes('थ्रिप्स') || q.includes('जांभळा')) {
+      if (detectedLang === 'hi') {
         return {
-          text: "Krushi Sathi आपको आगामी 7 दिनों का सटीक मौसम पूर्वानुमान, बारिश अलर्ट और मिट्टी की नमी के अनुसार सिंचाई (पानी देने) की सही सलाह प्रदान करता है।",
-          actions: [{ label: 'फीचर्स देखें', href: '#features' }]
+          text: "🧅 **प्याज फसल सुरक्षा (Onion Advisory):**\n\n1. **थ्रिप्स (Thrips / बोकड्या):** फिप्रोनिल (Fipronil 5% SC) 2ml/लीटर पानी में घोलकर छिड़कें।\n2. **बैंगनी धब्बा (Purple Blotch):** टेबुकोनाज़ोल + ट्राइफ्लॉक्सीस्ट्रोबिन (Tebuconazole + Trifloxystrobin) 0.7g/लीटर छिड़कें।",
+          actions: [{ label: 'फसल सुरक्षा गाइड', href: '#diseases' }]
         };
-      } else if (currentLang === 'mr') {
+      } else if (detectedLang === 'mr') {
         return {
-          text: "Krushi Sathi अ‍ॅपद्वारे तुम्हाला ७ दिवसांचा अचूक हवामान अंदाज, पावसाचा इशारा आणि जमिनीतील ओलाव्यानुसार पाणी देण्याची (सिंचन) अचूक वेळ समजते.",
-          actions: [{ label: 'वैशिष्ट्ये पहा', href: '#features' }]
+          text: "🧅 **कांदा पीक फवारणी नियोजन:**\n\n1. **थ्रिप्स (Thrips) नियंत्रण:** फायप्रोनिल (Fipronil 5% SC) २ मिली/लीटर पाण्यामध्ये फवारावे.\n2. **जांभळा करपा (Purple Blotch):** टेबुकॅनाझोल + ट्रायफ्लॉक्सिस्ट्रोबिन (Nativo) ०.७ ग्रॅम/लीटर फवारा.",
+          actions: [{ label: 'कांदा रोग उपाय', href: '#diseases' }]
         };
       } else {
         return {
-          text: "Krushi Sathi offers 7-day hyper-local weather forecasts, rain alerts, and soil-moisture-based irrigation advisory to optimize water usage.",
-          actions: [{ label: 'Explore Features', href: '#features' }]
+          text: "🧅 **Onion Crop Advisory:**\n\n1. **Thrips Control:** Spray Fipronil 5% SC @ 2ml/L with silicon spreader.\n2. **Purple Blotch:** Spray Tebuconazole + Trifloxystrobin @ 0.7g/L.",
+          actions: [{ label: 'Explore Disease Remedies', href: '#diseases' }]
         };
       }
     }
 
-    // 3. Fertilizer & Soil
-    if (q.includes('fertilizer') || q.includes('खत') || q.includes('उर्वरक') || q.includes('npk') || q.includes('माती') || q.includes('मिट्टी') || q.includes('soil')) {
-      if (currentLang === 'hi') {
+    // 4. SOYBEAN / सोयाबीन
+    if (q.includes('soybean') || q.includes('सोयाबीन') || q.includes('खोडमाशी') || q.includes('अळी')) {
+      if (detectedLang === 'mr') {
         return {
-          text: "ऐप में उपलब्ध Fertilizer Calculator आपकी फसल की उम्र और मिट्टी के आधार पर NPK एवं सूक्ष्म पोषक तत्वों (Micro-nutrients) की सही मात्रा बताता है।",
-          actions: [{ label: 'ऐप डाउनलोड करें', href: '#download' }]
-        };
-      } else if (currentLang === 'mr') {
-        return {
-          text: "Krushi Sathi मधील Fertilizer Calculator पिकाचे वय व मातीच्या प्रकारानुसार NPK आणि सूक्ष्म अन्नद्रव्यांची अचूक मात्रा कॅल्क्युलेट करून देतो.",
+          text: "🫘 **सोयाबीन पीक सल्ला:**\n\n1. **खोडमाशी व चक्रभुंगा:** थियामेथॉक्सम + लॅम्बडा सायहेलोथ्रिन (Ampligo/Solomon) ०.५ मिली/लीटर फवारावे.\n2. **पिवळा मोझॅक (Yellow Mosaic):** पांढऱ्या माशीच्या नियंत्रणासाठी थायामेथॉक्झम २५% WG ०.५ ग्रॅम/लीटर फवारा.",
           actions: [{ label: 'अ‍ॅप डाऊनलोड करा', href: '#download' }]
         };
       } else {
         return {
-          text: "Our AI Fertilizer Calculator calculates exact NPK dosage and micronutrients based on crop stage and soil conditions.",
-          actions: [{ label: 'Download App', href: '#download' }]
+          text: "🫘 **Soybean Protection Advisory:**\n\n1. **Stem Fly & Girdle Beetle:** Spray Thiamethoxam + Lambda-cyhalothrin @ 0.5ml/L.\n2. **Yellow Mosaic Virus:** Spray Thiamethoxam 25% WG @ 0.5g/L to control vector whiteflies.",
+          actions: [{ label: 'Download App for Schedule', href: '#download' }]
         };
       }
     }
 
-    // 4. Pricing / Plans
-    if (q.includes('price') || q.includes('pricing') || q.includes('plan') || q.includes('दर') || q.includes('किंमत') || q.includes('कीमत') || q.includes('फ्री') || q.includes('free') || q.includes('₹')) {
-      if (currentLang === 'hi') {
+    // 5. SUGARCANE / ऊस / गन्ना
+    if (q.includes('sugarcane') || q.includes('ऊस') || q.includes('गन्ना') || q.includes('हुमणी')) {
+      if (detectedLang === 'mr') {
         return {
-          text: "Krushi Sathi का Basic प्लान बिल्कुल FREE है! Pro प्लान मात्र ₹149/माह है जिसमें अनलिमिटेड डिजीज स्कैनिंग और 24/7 एग्री एक्सपर्ट सपोर्ट मिलता है।",
-          actions: [{ label: 'प्राइजिंग प्लान देखें', href: '/pricing' }]
+          text: "🎋 **ऊस पीक सल्ला:**\n\n1. **खोडकीडा:** क्लोरँट्रानिलीप्रोल (Chlorantraniliprole 0.4% GR) १८ किलो प्रति एकरी उसाच्या मुळाशी टाकावे.\n2. **हुमणी अळी (White Grub):** मेटाऱ्हायझियम ॲनिसोप्ली २ किलो प्रति एकर शेणखतात मिसळून द्यावे.",
+          actions: [{ label: 'तज्ज्ञ सल्ला घ्या', href: '#download' }]
         };
-      } else if (currentLang === 'mr') {
+      } else {
         return {
-          text: "Krushi Sathi चा बेसिक प्लॅन पूर्णपणे मोफत (FREE) आहे! प्रो प्लॅन फक्त ₹149/महिना आहे ज्यामध्ये अमर्याद रोग स्कॅनिंग आणि कृषी तज्ज्ञ सल्ला मिळतो.",
+          text: "🎋 **Sugarcane Protection Advisory:**\n\n1. **Early Shoot Borer:** Apply Chlorantraniliprole 0.4% GR @ 18 kg/acre near roots with irrigation.\n2. **White Grub:** Soil application of Metarhizium anisopliae bio-fungicide @ 2 kg/acre.",
+          actions: [{ label: 'Get Expert Advice', href: '#download' }]
+        };
+      }
+    }
+
+    // 6. FERTILIZER & NUTRITION (खत व्यवस्थापन)
+    if (q.includes('fertilizer') || q.includes('खत') || q.includes('उर्वरक') || q.includes('npk') || q.includes('युरिया') || q.includes('dap') || q.includes('19:19:19') || q.includes('12:61:0') || q.includes('0:52:34') || q.includes('0:0:50')) {
+      if (detectedLang === 'hi') {
+        return {
+          text: "💡 **उर्वरक (Fertilizer) अनुसूची गाइड:**\n\n1. **शाकीय वृद्धि (0-30 दिन):** NPK 19:19:19 @ 5g/लीटर पानी में स्प्रे करें।\n2. **फूल आते समय (30-60 दिन):** NPK 12:61:0 या 0:52:34 @ 5g/लीटर दें।\n3. **फल बनते समय:** NPK 0:0:50 + कैल्शियम नाइट्रेट 3g/लीटर स्प्रे करें।",
+          actions: [{ label: 'Fertilizer Calculator खोलें', href: '#download' }]
+        };
+      } else if (detectedLang === 'mr') {
+        return {
+          text: "💡 **पिकांसाठी योग्य खत व्यवस्थापन पत्रीक:**\n\n1. **शाकीय वाढीची वेळ (०-३० दिवस):** NPK १९:१९:१९ ५ ग्रॅम/लीटर फवारावे किंवा ड्रिपने द्यावे.\n2. **फुलधारणा काळ (३०-६० दिवस):** NPK १२:६१:० किंवा ०:५२:३४ ५ ग्रॅम/लीटर फवारावे.\n3. **फळधारणा व पकवता:** NPK ०:०:५० + कॅल्शियम नायट्रेट ३ ग्रॅम/लीटर फवारावे.",
+          actions: [{ label: 'Fertilizer Calculator वापरा', href: '#download' }]
+        };
+      } else {
+        return {
+          text: "💡 **Optimal NPK Fertilizer Schedule:**\n\n1. **Vegetative Stage (0-30 days):** NPK 19:19:19 @ 5g/L foliar or drip.\n2. **Flowering Stage (30-60 days):** NPK 12:61:0 or 0:52:34 @ 5g/L.\n3. **Fruiting/Harvesting:** NPK 0:0:50 + Calcium Nitrate @ 3g/L for premium quality.",
+          actions: [{ label: 'Open Fertilizer Calculator', href: '#download' }]
+        };
+      }
+    }
+
+    // 7. GENERAL DISEASE QUERY FALLBACK
+    if (q.includes('disease') || q.includes('रोग') || q.includes('कीड') || q.includes('स्प्रे') || q.includes('spray') || q.includes('औषध') || q.includes('दवा')) {
+      if (detectedLang === 'hi') {
+        return {
+          text: `🔍 **"${query}" के लिए कृषि साथी समाधान:**\n\n1. **रोग पहचान:** Krushi Sathi AI स्कैनर पत्तियों की फोटो से 98% सटीक बीमारी बताता है।\n2. **सामान्य फफूंदनाशक:** साफ (Saaf - Carbendazim + Mancozeb) 2g/लीटर पानी में घोलकर छिड़कें।\n3. **कीटनाशक:** इमिडाक्लोप्रिड (Imidacloprid 17.8% SL) 0.5ml/लीटर पानी।`,
+          actions: [{ label: 'पत्ती का फोटो स्कैन करें', href: '#diseases' }]
+        };
+      } else if (detectedLang === 'mr') {
+        return {
+          text: `🔍 **"${query}" संदर्भात अचूक सल्ला:**\n\n1. **अचूक निदान:** Krushi Sathi AI स्कॅनरद्वारे पानांचा फोटो काढून रोगाचे अचूक नाव व औषध शोधा.\n2. **सर्वसाधारण बुरशीनाशक:** साफ (Saaf - Carbendazim + Mancozeb) २ ग्रॅम/लीटर फवारावे.\n3. **सर्वसाधारण कीटकनाशक:** इमिडाक्लोप्रिड (Imidacloprid 17.8% SL) ०.५ मिली/लीटर फवारा.`,
+          actions: [{ label: 'पानाचा फोटो स्कॅन करा', href: '#diseases' }]
+        };
+      } else {
+        return {
+          text: `🔍 **Farming Solution for "${query}":**\n\n1. **Instant Diagnosis:** Upload leaf photo to Krushi Sathi AI Scanner for 98% accurate diagnosis.\n2. **Broad-spectrum Fungicide:** Saaf (Carbendazim + Mancozeb) @ 2g/L water.\n3. **Broad-spectrum Insecticide:** Imidacloprid 17.8% SL @ 0.5ml/L water.`,
+          actions: [{ label: 'Scan Leaf with AI', href: '#diseases' }]
+        };
+      }
+    }
+
+    // 8. PRICING & PLANS
+    if (q.includes('price') || q.includes('pricing') || q.includes('plan') || q.includes('दर') || q.includes('किंमत') || q.includes('कीमत') || q.includes('फ्री') || q.includes('free') || q.includes('₹')) {
+      if (detectedLang === 'mr') {
+        return {
+          text: "💰 **Krushi Sathi प्लॅन व दर पत्रक:**\n\n• **बेसिक प्लॅन:** ₹० (मोफत) - मूलभूत हवामान व रोग मार्गदर्शिका.\n• **प्रो प्लॅन:** फक्त ₹१४९/महिना - अमर्याद AI रोग निदाने, वैयक्तिक पीक सल्लागार व 24/7 हेल्पलाइन सपोर्ट.",
           actions: [{ label: 'दरपत्रक पहा (Pricing)', href: '/pricing' }]
         };
       } else {
         return {
-          text: "Krushi Sathi Basic Plan is completely FREE! The Pro Plan is just ₹149/month offering unlimited AI disease scans and 24/7 expert consultations.",
+          text: "💰 **Krushi Sathi Subscription Plans:**\n\n• **Basic Plan:** ₹0 (Free Forever) - Weather forecasts & basic crop guides.\n• **Pro Plan:** ₹149/month - Unlimited AI leaf scans, personal agri consultant, and 24/7 helpline.",
           actions: [{ label: 'View Pricing Plans', href: '/pricing' }]
         };
       }
     }
 
-    // 5. App Download & Installation
-    if (q.includes('download') || q.includes('app') || q.includes('अ‍ॅप') || q.includes('ऐप') || q.includes('प्ले स्टोर') || q.includes('play store') || q.includes('install')) {
-      if (currentLang === 'hi') {
-        return {
-          text: "Krushi Sathi ऐप Android और iOS दोनों के लिए उपलब्ध है। आप Google Play Store से डाउनलोड कर सकते हैं या नीचे दिए लिंक पर क्लिक करें।",
-          actions: [{ label: 'अभी ऐप डाउनलोड करें', href: '#download' }]
-        };
-      } else if (currentLang === 'mr') {
-        return {
-          text: "Krushi Sathi अ‍ॅप Android आणि iOS वर उपलब्ध आहे. तुम्ही Google Play Store वरून किंवा खालील बटणावर क्लिक करून डाउनलोड करू शकता.",
-          actions: [{ label: 'अ‍ॅप डाऊनलोड करा', href: '#download' }]
-        };
-      } else {
-        return {
-          text: "Krushi Sathi App is available for Android & iOS. Download directly from Google Play Store or tap the link below.",
-          actions: [{ label: 'Download Krushi Sathi', href: '#download' }]
-        };
-      }
+    // 9. APP DOWNLOAD
+    if (q.includes('download') || q.includes('app') || q.includes('अ‍ॅप') || q.includes('ऐप') || q.includes('install')) {
+      return {
+        text: detectedLang === 'mr' 
+          ? "📱 Krushi Sathi मोबाइल अ‍ॅप Android व iOS वर उपलब्ध आहे. खालील बटणावर क्लिक करून थेट डाऊनलोड करा!"
+          : "📱 Download the Krushi Sathi Mobile App on Android & iOS for instant leaf diagnosis & farm management!",
+        actions: [{ label: 'अ‍ॅप डाऊनलोड करा', href: '#download' }]
+      };
     }
 
-    // 6. Greetings & Thanks
+    // 10. GREETINGS
     if (q.includes('hello') || q.includes('hi') || q.includes('hey') || q.includes('नमस्कार') || q.includes('नमस्ते') || q.includes('राम राम')) {
       return {
-        text: currentLang === 'mr' 
-          ? "राम राम बळीराजा! 🌾 आज मी तुम्हाला पिकांबद्दल काय माहिती देऊ?" 
-          : (currentLang === 'hi' ? "नमस्ते किसान भाई! 🌾 आज मैं आपकी खेती में क्या मदद कर सकता हूँ?" : "Hello farmer! 🌾 How can I assist you with your crops today?"),
-        suggestions: getSuggestions(currentLang)
+        text: detectedLang === 'mr'
+          ? "राम राम बळीराजा! 🌾 आज तुमच्या शेतात कोणती अडचण आहे? टोमॅटो, कापूस, कांदा किंवा खतांबद्दल प्रश्न विचारा!"
+          : (detectedLang === 'hi' ? "नमस्ते किसान भाई! 🌾 आज आपकी फसल में क्या समस्या है? टमाटर, कपास, प्याज या खाद के बारे में पूछें!" : "Hello farmer! 🌾 What crop problem can I solve for you today?"),
+        suggestions: getSuggestions(detectedLang)
       };
     }
 
-    // Smart general farming fallback
-    if (currentLang === 'hi') {
+    // 11. DYNAMIC GENERAL SMART FALLBACK
+    if (detectedLang === 'mr') {
       return {
-        text: `आपकी जानकारी ("${query}") के लिए सलाह: Krushi Sathi AI आपकी फसल की सुरक्षा, सही खाद और कीट नियंत्रण के लिए 24/7 तैयार है। आप हमारी मुख्य सेवाएं देख सकते हैं या ऐप डाउनलोड कर सकते हैं!`,
+        text: `📌 **"${query}" बद्दल कृषी सल्ला:**\n\nशेतीमध्ये चांगल्या उत्पन्नासाठी योग्य वेळी फवारणी, संतुलित खत नियोजन आणि हवामानाचा अंदाज घेणे महत्त्वाचे आहे. तुम्ही तुमच्या पिकाचा किंवा पानाचा फोटो Krushi Sathi AI स्कॅनरवर अपलोड करून अचूक उपाय मिळवू शकता!`,
         actions: [
-          { label: 'डिसीज गाइड', href: '#diseases' },
-          { label: 'ऐप डाउनलोड', href: '#download' }
+          { label: '📸 AI पानाचा फोटो स्कॅन करा', href: '#diseases' },
+          { label: '📱 अ‍ॅप डाऊनलोड करा', href: '#download' }
         ]
       };
-    } else if (currentLang === 'mr') {
+    } else if (detectedLang === 'hi') {
       return {
-        text: `तुमच्या प्रश्नासाठी ("${query}") सल्ला: Krushi Sathi AI शेतकरी बांधवांना पिकांची निगा, फवारणी व खतांचे नियोजन करण्यासाठी सदैव तत्पर आहे. तुम्ही खालील पर्याय वापरून अधिक माहिती घेऊ शकता:`,
+        text: `📌 **"${query}" के संबंध में सलाह:**\n\nबेहतर पैदावार के लिए सही समय पर कीटनाशक छिड़काव, संतुलित NPK खाद और मौसम अलर्ट जरूरी हैं। आप Krushi Sathi AI स्कैनर पर पत्ती की फोटो अपलोड करके सटीक समाधान पा सकते हैं!`,
         actions: [
-          { label: 'रोग मार्गदर्शिका', href: '#diseases' },
-          { label: 'अ‍ॅप डाऊनलोड', href: '#download' }
+          { label: '📸 AI पत्ती स्कैन करें', href: '#diseases' },
+          { label: '📱 ऐप डाउनलोड करें', href: '#download' }
         ]
       };
     } else {
       return {
-        text: `Regarding "${query}": Krushi Sathi AI helps farmers protect crops, optimize fertilizers, and maximize yield. Explore our core features or download the mobile app for instant assistance!`,
+        text: `📌 **Agri Expert Advisory for "${query}":**\n\nFor optimal crop yields, timely pesticide sprays, balanced NPK fertilizing, and hyper-local weather alerts are key. Upload a leaf photo to Krushi Sathi AI Scanner for immediate 98% accurate diagnosis!`,
         actions: [
-          { label: 'Disease Scanner', href: '#diseases' },
-          { label: 'Download Mobile App', href: '#download' }
+          { label: '📸 Scan Leaf with AI', href: '#diseases' },
+          { label: '📱 Download Mobile App', href: '#download' }
         ]
       };
     }
@@ -243,7 +311,7 @@ export default function Chatbot() {
     if (!textToSend) setInput('');
     setIsTyping(true);
 
-    // Simulate AI response delay
+    // Simulate realistic AI thinking delay
     setTimeout(() => {
       const response = getAIResponse(text, lang);
       const botMsg = {
@@ -257,7 +325,7 @@ export default function Chatbot() {
 
       setMessages(prev => [...prev, botMsg]);
       setIsTyping(false);
-    }, 700);
+    }, 600);
   };
 
   const handleActionClick = (href) => {
@@ -391,7 +459,7 @@ export default function Chatbot() {
                 )}
 
                 <div className="chatbot-msg__body">
-                  <div className="chatbot-msg__text">{msg.text}</div>
+                  <div className="chatbot-msg__text" style={{ whiteSpace: 'pre-line' }}>{msg.text}</div>
                   
                   {/* Embedded Action Buttons */}
                   {msg.actions && msg.actions.length > 0 && (
