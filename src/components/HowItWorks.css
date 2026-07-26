@@ -76,5 +76,30 @@
 @media (max-width: 768px) {
   .hiw__steps {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hiw__header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hiw__step {
+    padding: 24px 18px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+  .hiw__step-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+  }
+  .hiw__step-content h3 {
+    font-size: 18px;
+  }
+  .hiw__step-num {
+    font-size: 90px;
+    top: -10px;
+    right: 0;
   }
 }

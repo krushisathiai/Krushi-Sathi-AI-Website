@@ -6,7 +6,7 @@ export default function Pricing() {
   const { t } = useTranslation();
 
   return (
-    <div style={{ paddingTop: '100px', minHeight: '100vh', background: 'var(--bg-1)' }}>
+    <div style={{ paddingTop: '96px', minHeight: '100vh', background: 'var(--bg-1)' }}>
       <div className="container" style={{ paddingBottom: '80px' }}>
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -21,7 +21,7 @@ export default function Pricing() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', maxWidth: '900px', margin: '0 auto' }}>
           
-          <div className="glass-card" style={{ padding: '48px', position: 'relative' }}>
+          <div className="glass-card" style={{ padding: 'clamp(24px, 5vw, 48px)', position: 'relative' }}>
             <h3 style={{ fontSize: '24px', fontFamily: 'var(--font-heading)', color: 'var(--text-1)' }}>{t('pricing.basic.name')}</h3>
             <p style={{ color: 'var(--text-sub)', marginTop: '8px', marginBottom: '32px' }}>{t('pricing.basic.desc')}</p>
             <div style={{ fontSize: '48px', fontWeight: '800', color: 'var(--text-1)', marginBottom: '32px' }}>
@@ -40,7 +40,7 @@ export default function Pricing() {
             <button className="btn btn-outline" style={{ width: '100%' }}>{t('pricing.basic.btn')}</button>
           </div>
 
-          <div className="glass-card" style={{ padding: '48px', position: 'relative', border: '1px solid var(--primary)' }}>
+          <div className="glass-card" style={{ padding: 'clamp(24px, 5vw, 48px)', position: 'relative', border: '1px solid var(--primary)' }}>
             <div style={{ position: 'absolute', top: '-14px', left: '50%', transform: 'translateX(-50%)', background: 'var(--primary)', color: '#fff', padding: '4px 16px', borderRadius: '50px', fontSize: '12px', fontWeight: '700', letterSpacing: '1px' }}>
               {t('pricing.pro.rec')}
             </div>

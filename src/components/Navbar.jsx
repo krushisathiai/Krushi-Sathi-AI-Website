@@ -34,26 +34,26 @@ export default function Navbar() {
   }, [location]);
 
   useEffect(() => {
-    if (location.pathname !== '/') return;
-
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
       
-      const sections = ['home', 'about', 'features', 'how-it-works', 'diseases', 'testimonials'];
-      let current = '';
-      
-      sections.forEach((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            current = `#${section}`;
+      if (location.pathname === '/') {
+        const sections = ['home', 'about', 'features', 'how-it-works', 'diseases', 'testimonials'];
+        let current = '';
+        
+        sections.forEach((section) => {
+          const el = document.getElementById(section);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 200 && rect.bottom >= 200) {
+              current = `#${section}`;
+            }
           }
+        });
+        
+        if (current) {
+          setActiveLink(current);
         }
-      });
-      
-      if (current) {
-        setActiveLink(current);
       }
     };
 
