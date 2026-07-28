@@ -1,3 +1,4 @@
+/* ─── HOW IT WORKS ─────────────────────────────────────────────────────────── */
 .hiw {
   background: var(--bg-1);
 }
@@ -5,22 +6,22 @@
 .hiw__header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 60px;
+  margin: 0 auto 56px;
 }
 
 .hiw__steps {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 28px;
 }
 
 .hiw__step {
   display: flex;
   align-items: flex-start;
-  gap: 24px;
+  gap: 20px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border);
-  padding: 32px;
+  padding: 32px 28px;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -38,17 +39,18 @@
   position: absolute;
   top: -20px;
   right: -10px;
-  font-size: 120px;
+  font-size: 110px;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.03);
   line-height: 1;
   pointer-events: none;
   font-family: var(--font-heading);
+  user-select: none;
 }
 
 .hiw__step-icon {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 14px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   display: flex;
@@ -59,27 +61,34 @@
   box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
 }
 
+.hiw__step-content {
+  flex: 1;
+  min-width: 0;
+}
+
 .hiw__step-content h3 {
   font-family: var(--font-heading);
-  font-size: 20px;
+  font-size: clamp(17px, 2vw, 20px);
   color: var(--text-1);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .hiw__step-content p {
   color: var(--text-sub);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
+/* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .hiw__header {
+    margin-bottom: 40px;
+  }
   .hiw__steps {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-  .hiw__header {
-    margin-bottom: 40px;
   }
 }
 
@@ -93,9 +102,6 @@
     width: 46px;
     height: 46px;
     border-radius: 12px;
-  }
-  .hiw__step-content h3 {
-    font-size: 18px;
   }
   .hiw__step-num {
     font-size: 90px;

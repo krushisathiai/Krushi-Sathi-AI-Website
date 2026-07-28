@@ -39,7 +39,7 @@ export default function Diseases() {
               transition={{ duration: 0.4, delay: idx * 0.1 }}
             >
               <div className="disease__img-wrap">
-                <img src={disease.img} alt={disease.name} className="disease__img" />
+                <img src={disease.img} alt={disease.name} className="disease__img" loading="lazy" decoding="async" />
                 <div className="disease__match">
                   <span className="dot"></span>
                   {disease.match} Match

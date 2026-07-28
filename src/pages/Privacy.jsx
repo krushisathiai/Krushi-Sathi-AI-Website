@@ -1,38 +1,63 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
+const sectionStyle = {
+  marginBottom: '32px',
+};
+
+const headingStyle = {
+  fontSize: 'clamp(17px, 2vw, 20px)',
+  fontFamily: 'var(--font-heading)',
+  color: 'var(--text-1)',
+  marginBottom: '12px',
+  fontWeight: '600',
+  lineHeight: '1.4',
+};
+
+const paraStyle = {
+  color: 'var(--text-sub)',
+  lineHeight: '1.75',
+  fontSize: '15px',
+};
+
 export default function Privacy() {
   const { t } = useTranslation();
 
   return (
-    <div style={{ paddingTop: '96px', minHeight: '100vh', background: 'var(--bg-1)' }}>
-      <div className="container" style={{ paddingBottom: '80px', maxWidth: '800px' }}>
-        <motion.div 
+    <div className="page-wrapper">
+      <div className="container page-inner" style={{ maxWidth: '840px', margin: '0 auto' }}>
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          style={{ textAlign: 'center', marginBottom: '40px' }}
+          style={{ textAlign: 'center', marginBottom: '48px' }}
         >
           <div className="section-tag" style={{ justifyContent: 'center' }}>Legal</div>
-          <h1 className="hero__title">{t('privacy.title')}</h1>
+          <h1 className="section-title">{t('privacy.title')}</h1>
         </motion.div>
 
-        <div className="glass-card" style={{ padding: 'clamp(20px, 5vw, 48px)' }}>
-          <h3 style={{ fontSize: '20px', color: 'var(--text-1)', marginBottom: '12px' }}>{t('privacy.d1')}</h3>
-          <p style={{ color: 'var(--text-sub)', marginBottom: '32px', lineHeight: '1.6' }}>
-            {t('privacy.p1')}
-          </p>
+        <motion.div
+          className="glass-card"
+          style={{ padding: 'clamp(24px, 5vw, 48px)' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>{t('privacy.d1')}</h3>
+            <p style={paraStyle}>{t('privacy.p1')}</p>
+          </div>
 
-          <h3 style={{ fontSize: '20px', color: 'var(--text-1)', marginBottom: '12px' }}>{t('privacy.d2')}</h3>
-          <p style={{ color: 'var(--text-sub)', marginBottom: '32px', lineHeight: '1.6' }}>
-            {t('privacy.p2')}
-          </p>
+          <div style={sectionStyle}>
+            <h3 style={headingStyle}>{t('privacy.d2')}</h3>
+            <p style={paraStyle}>{t('privacy.p2')}</p>
+          </div>
 
-          <h3 style={{ fontSize: '20px', color: 'var(--text-1)', marginBottom: '12px' }}>{t('privacy.d3')}</h3>
-          <p style={{ color: 'var(--text-sub)', lineHeight: '1.6' }}>
-            {t('privacy.p3')}
-          </p>
-        </div>
+          <div>
+            <h3 style={headingStyle}>{t('privacy.d3')}</h3>
+            <p style={paraStyle}>{t('privacy.p3')}</p>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

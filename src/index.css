@@ -33,6 +33,8 @@
   --red:            #ef4444;
   --blue:           #3b82f6;
   --cyan:           #06b6d4;
+  --purple:         #a855f7;
+  --teal:           #14b8a6;
 
   /* Shadows */
   --shadow-sm:      0 1px 3px rgba(0,0,0,0.4);
@@ -113,15 +115,41 @@ button {
 ::-webkit-scrollbar-thumb { background: var(--primary-dark); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
+/* ─── ACCESSIBILITY — FOCUS VISIBLE ───────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
 /* ─── UTILITIES ────────────────────────────────────────────────────────────── */
 .container {
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 24px;
+  width: 100%;
 }
 
 .section {
   padding: var(--section-py) 0;
+}
+
+/* Utility for inner pages that need top padding due to fixed navbar */
+.page-wrapper {
+  padding-top: 96px;
+  min-height: 100vh;
+  background: var(--bg-1);
+}
+
+.page-inner {
+  padding-bottom: 80px;
 }
 
 .gradient-text {
@@ -164,7 +192,7 @@ button {
 
 .section-title {
   font-family: var(--font-heading);
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(26px, 4vw, 44px);
   font-weight: 700;
   line-height: 1.2;
   color: var(--text-1);
@@ -172,10 +200,17 @@ button {
 }
 
 .section-subtitle {
-  font-size: clamp(15px, 2vw, 17px);
+  font-size: clamp(14px, 2vw, 17px);
   color: var(--text-sub);
   line-height: 1.7;
   max-width: 560px;
+}
+
+/* When a section header is centered, also center the subtitle */
+.section-header--center .section-subtitle,
+[style*="text-align: center"] .section-subtitle {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btn {
@@ -190,6 +225,7 @@ button {
   font-family: var(--font-body);
   transition: all 0.3s var(--ease);
   white-space: nowrap;
+  line-height: 1;
 }
 
 .btn-primary {
@@ -265,21 +301,61 @@ button {
 }
 
 /* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --section-py: 80px;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --section-py: 64px;
   }
   .container {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --section-py: 48px;
+    --section-py: 52px;
+  }
+  .container {
+    padding: 0 16px;
   }
   .btn {
     padding: 12px 22px;
     font-size: 14px;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --section-py: 44px;
+  }
+  .container {
+    padding: 0 14px;
+  }
+  .section-title {
+    font-size: clamp(22px, 6vw, 32px);
+  }
+}
+
+@media (max-width: 320px) {
+  :root {
+    --section-py: 40px;
+  }
+  .container {
+    padding: 0 12px;
+  }
+}
+
+/* ─── REDUCED MOTION ───────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

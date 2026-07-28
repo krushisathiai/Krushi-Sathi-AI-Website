@@ -1,3 +1,4 @@
+/* ─── DISEASES SECTION ─────────────────────────────────────────────────────── */
 .diseases {
   background: var(--bg-1);
 }
@@ -5,7 +6,7 @@
 .diseases__header {
   text-align: center;
   max-width: 700px;
-  margin: 0 auto 60px;
+  margin: 0 auto 56px;
 }
 
 .diseases__grid {
@@ -26,12 +27,13 @@
 
 .disease-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
+/* ─── IMAGE ────────────────────────────────────────────────────────────────── */
 .disease__img-wrap {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 16 / 10;
   background: var(--bg-3);
   position: relative;
   overflow: hidden;
@@ -45,14 +47,15 @@
 }
 
 .disease-card:hover .disease__img {
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
+/* ─── BADGE ────────────────────────────────────────────────────────────────── */
 .disease__match {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(6, 12, 8, 0.8);
+  top: 10px;
+  right: 10px;
+  background: rgba(6, 12, 8, 0.85);
   backdrop-filter: blur(8px);
   color: #fff;
   font-size: 11px;
@@ -61,8 +64,8 @@
   border-radius: 50px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .disease__match .dot {
@@ -70,40 +73,42 @@
   height: 6px;
   border-radius: 50%;
   background: var(--primary);
-  box-shadow: 0 0 8px var(--primary);
+  box-shadow: 0 0 6px var(--primary);
   animation: pulse-glow 2s infinite;
+  flex-shrink: 0;
 }
 
+/* ─── INFO ─────────────────────────────────────────────────────────────────── */
 .disease__info {
-  padding: 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 6px;
 }
 
 .disease__crop {
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
   color: var(--primary);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 1.5px;
-  margin-bottom: 6px;
 }
 
 .disease__name {
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 16px;
   color: var(--text-1);
-  margin-bottom: 24px;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .disease__btn {
-  margin-top: auto;
-  font-size: 14px;
+  margin-top: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-1);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
   background: transparent;
@@ -111,6 +116,7 @@
   padding: 0;
   cursor: pointer;
   transition: all 0.3s var(--ease);
+  font-family: var(--font-body);
 }
 
 .disease-card:hover .disease__btn {
@@ -118,19 +124,34 @@
   gap: 8px;
 }
 
+/* ─── FOOTER ───────────────────────────────────────────────────────────────── */
 .diseases__footer {
   text-align: center;
   margin-top: 48px;
 }
 
+/* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .diseases__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
 @media (max-width: 600px) {
   .diseases__grid {
     grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+    gap: 18px;
+  }
+  .diseases__header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 375px) {
+  .disease__info {
+    padding: 16px;
   }
 }
