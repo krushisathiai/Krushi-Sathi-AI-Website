@@ -57,28 +57,45 @@ export default function LangWelcomeModal() {
   return (
     <div className="lang-modal-overlay" role="dialog" aria-modal="true" aria-label="Select language">
       <div className="lang-modal">
+        {/* Logo/Icon Area */}
+        <div className="lang-modal__logo-area">
+          <div className="lang-modal__logo-ring">
+            <img src={logoImg} alt="Krushi Sathi" />
+          </div>
+        </div>
+
         {/* Welcome heading */}
-        <h2 className="lang-modal__title" style={{ marginBottom: '20px', fontSize: '18px' }}>
-          Select Language<br/>भाषा चुनें · भाषा निवडा
+        <h2 className="lang-modal__title">
+          Welcome to <span className="text-gradient">Krushi Sathi AI</span>
         </h2>
+        <p className="lang-modal__sub">
+          Please select your preferred language to get started.<br/>
+          <span style={{ fontSize: '13px', opacity: 0.7 }}>अपनी भाषा चुनें · आपली भाषा निवडा</span>
+        </p>
 
         {/* Language Options */}
-        <div className="lang-modal__options" style={{ marginBottom: '0' }}>
+        <div className="lang-modal__options">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
               className={`lang-modal__opt ${selected === lang.code ? 'selected' : ''}`}
               onClick={() => {
                 setSelected(lang.code);
-                // Auto-confirm on click
-                i18n.changeLanguage(lang.code);
-                localStorage.setItem(LANG_KEY, lang.code);
-                setVisible(false);
+                // Auto-confirm on click after a tiny delay for visual feedback
+                setTimeout(() => {
+                  i18n.changeLanguage(lang.code);
+                  localStorage.setItem(LANG_KEY, lang.code);
+                  setVisible(false);
+                }, 250);
               }}
             >
               <span className="lang-modal__opt-info">
                 <span className="lang-modal__opt-name">{lang.name}</span>
+                <span className="lang-modal__opt-native">{lang.native}</span>
               </span>
+              <div className="lang-modal__opt-radio">
+                <div className="lang-modal__opt-radio-inner" />
+              </div>
             </button>
           ))}
         </div>

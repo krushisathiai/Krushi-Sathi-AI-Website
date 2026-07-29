@@ -268,8 +268,11 @@
   max-height: calc(100dvh - 72px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  transition: clip-path 0.35s var(--ease), visibility 0.35s;
+  /* Fix mobile menu visibility bugs */
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s var(--bounce);
   visibility: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   z-index: 999;
@@ -281,7 +284,9 @@
 }
 
 .navbar__mobile.open {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
   visibility: visible;
 }
 
