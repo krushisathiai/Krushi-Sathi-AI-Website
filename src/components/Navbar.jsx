@@ -33,9 +33,17 @@ export default function Navbar() {
     }
   }, [location]);
 
+  const [scrollProgress, setScrollProgress] = useState(0);
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
+      
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (height > 0) {
+        setScrollProgress((winScroll / height) * 100);
+      }
       
       if (location.pathname === '/') {
         const sections = ['home', 'about', 'features', 'how-it-works', 'diseases', 'testimonials'];
@@ -208,6 +216,11 @@ export default function Navbar() {
             {t('nav.download')}
           </button>
         </div>
+      </div>
+
+      {/* Scroll Progress Bar */}
+      <div className="navbar__progress-container">
+        <div className="navbar__progress-bar" style={{ width: `${scrollProgress}%` }}></div>
       </div>
     </nav>
   );
