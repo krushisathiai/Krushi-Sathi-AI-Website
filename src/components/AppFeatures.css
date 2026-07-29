@@ -1,0 +1,314 @@
+/* ─── APP FEATURES SECTION ─────────────────────────────────────────────────── */
+.app-features {
+  background: var(--bg-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-features__header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 80px;
+}
+
+.app-features__subtitle {
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--text-sub);
+  line-height: 1.7;
+  margin-top: 4px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── FEATURE BLOCK ────────────────────────────────────────────────────────── */
+.feature-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 100px;
+  position: relative;
+}
+
+.feature-block:last-child {
+  margin-bottom: 0;
+}
+
+/* Alternate: odd blocks → text left, even → text right */
+.feature-block--reverse {
+  direction: rtl;
+}
+.feature-block--reverse > * {
+  direction: ltr;
+}
+
+/* ─── TEXT SIDE ────────────────────────────────────────────────────────────── */
+.feature-block__text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-block__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  width: fit-content;
+  border: 1px solid;
+}
+
+.feature-block__title {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.25;
+}
+
+.feature-block__desc {
+  font-size: clamp(14px, 1.6vw, 16px);
+  color: var(--text-sub);
+  line-height: 1.75;
+}
+
+/* ─── BULLET POINTS ────────────────────────────────────────────────────────── */
+.feature-block__points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.feature-block__point {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.5;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: all 0.25s var(--ease);
+}
+
+.feature-block__point:hover {
+  border-color: var(--border-strong);
+  background: rgba(255,255,255,0.04);
+  transform: translateX(4px);
+}
+
+/* ─── VISUAL / CARD SIDE ───────────────────────────────────────────────────── */
+.feature-block__visual {
+  position: relative;
+}
+
+.feature-card-visual {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+
+.feature-card-visual::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.feature-card-visual:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow);
+}
+
+.feature-card-visual:hover::before {
+  opacity: 0.45;
+}
+
+/* Icon header */
+.feature-card-visual__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid;
+  transition: transform 0.3s var(--bounce);
+}
+
+.feature-card-visual:hover .feature-card-visual__icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+.feature-card-visual__title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 8px;
+}
+
+.feature-card-visual__sub {
+  font-size: 13px;
+  color: var(--text-sub);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* ─── STATS ROW ────────────────────────────────────────────────────────────── */
+.feature-card-visual__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.feature-stat {
+  text-align: center;
+}
+
+.feature-stat__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.feature-stat__label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+/* ─── MINI SCREEN MOCKUP inside card ──────────────────────────────────────── */
+.feature-mock {
+  background: var(--bg-2);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 14px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feature-mock__bar {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--border-strong);
+}
+
+.feature-mock__bar--accent {
+  width: 60%;
+}
+
+.feature-mock__bar--short {
+  width: 40%;
+}
+
+.feature-mock__row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.feature-mock__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── DIVIDER ──────────────────────────────────────────────────────────────── */
+.feature-block-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
+  margin: 80px 0;
+}
+
+/* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .feature-block {
+    gap: 40px;
+    margin-bottom: 72px;
+  }
+  .app-features__header {
+    margin-bottom: 56px;
+  }
+  .feature-block-divider {
+    margin: 56px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature-block,
+  .feature-block--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+  .feature-block--reverse > * {
+    direction: ltr;
+  }
+  .app-features__header {
+    margin-bottom: 40px;
+  }
+  .feature-block-divider {
+    margin: 40px 0;
+  }
+  .feature-card-visual {
+    padding: 28px 22px;
+  }
+  .feature-card-visual__stats {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature-block {
+    margin-bottom: 40px;
+    gap: 24px;
+  }
+  .feature-block__title {
+    font-size: clamp(20px, 5vw, 28px);
+  }
+  .feature-card-visual {
+    padding: 22px 18px;
+  }
+  .feature-block-divider {
+    margin: 32px 0;
+  }
+  .feature-card-visual__stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

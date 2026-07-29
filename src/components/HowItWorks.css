@@ -11,8 +11,8 @@
 
 .hiw__steps {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .hiw__step {
@@ -82,30 +82,34 @@
 }
 
 /* ─── RESPONSIVE ───────────────────────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hiw__header {
     margin-bottom: 40px;
   }
   .hiw__steps {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .hiw__step {
-    padding: 24px 18px;
+  .hiw__steps {
+    grid-template-columns: 1fr;
     gap: 16px;
-    border-radius: 16px;
+  }
+  .hiw__step {
+    padding: 22px 16px;
+    gap: 14px;
+    border-radius: 14px;
   }
   .hiw__step-icon {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
   }
   .hiw__step-num {
-    font-size: 90px;
-    top: -10px;
+    font-size: 80px;
+    top: -8px;
     right: 0;
   }
 }
