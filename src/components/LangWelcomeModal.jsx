@@ -57,49 +57,31 @@ export default function LangWelcomeModal() {
   return (
     <div className="lang-modal-overlay" role="dialog" aria-modal="true" aria-label="Select language">
       <div className="lang-modal">
-        {/* Logo */}
-        <div className="lang-modal__logo">
-          <img src={logoImg} alt="Krushi Sathi Logo" />
-          <span className="lang-modal__logo-name">Krushi Sathi</span>
-        </div>
-
         {/* Welcome heading */}
-        <h2 className="lang-modal__title">Welcome / स्वागत है / स्वागत आहे</h2>
-        <p className="lang-modal__sub">
-          Choose your preferred language to get the best experience.
-          <br />
-          <span style={{ fontSize: '12px', opacity: 0.7 }}>अपनी भाषा चुनें · आपली भाषा निवडा</span>
-        </p>
+        <h2 className="lang-modal__title" style={{ marginBottom: '20px', fontSize: '18px' }}>
+          Select Language<br/>भाषा चुनें · भाषा निवडा
+        </h2>
 
         {/* Language Options */}
-        <div className="lang-modal__options">
+        <div className="lang-modal__options" style={{ marginBottom: '0' }}>
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}
               className={`lang-modal__opt ${selected === lang.code ? 'selected' : ''}`}
-              onClick={() => setSelected(lang.code)}
+              onClick={() => {
+                setSelected(lang.code);
+                // Auto-confirm on click
+                i18n.changeLanguage(lang.code);
+                localStorage.setItem(LANG_KEY, lang.code);
+                setVisible(false);
+              }}
             >
               <span className="lang-modal__opt-info">
                 <span className="lang-modal__opt-name">{lang.name}</span>
-                <span className="lang-modal__opt-native">{lang.native}</span>
               </span>
-              <span className="lang-modal__opt-check" />
             </button>
           ))}
         </div>
-
-        {/* Confirm */}
-        <button
-          className="btn btn-primary btn-glow lang-modal__confirm"
-          onClick={handleConfirm}
-        >
-          Continue →
-        </button>
-
-        {/* Skip */}
-        <button className="lang-modal__skip" onClick={handleSkip}>
-          Skip, use English
-        </button>
       </div>
     </div>
   );
