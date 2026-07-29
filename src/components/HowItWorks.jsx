@@ -46,7 +46,7 @@ export default function HowItWorks() {
               >
                 <div className="hiw__step-num">{idx + 1}</div>
                 <div className="hiw__step-icon">
-                  <Icon size={24} />
+                  <Icon size={24} className="icon-premium" />
                 </div>
                 <div className="hiw__step-content">
                   <h3>{step.title}</h3>

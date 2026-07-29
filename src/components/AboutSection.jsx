@@ -16,9 +16,9 @@ export default function AboutSection() {
   const { t } = useTranslation();
 
   const cards = [
-    { icon: <Leaf size={30} />, title: t('about.cards.0.title'), desc: t('about.cards.0.desc') },
-    { icon: <Shield size={30} />, title: t('about.cards.1.title'), desc: t('about.cards.1.desc') },
-    { icon: <Users size={30} />, title: t('about.cards.2.title'), desc: t('about.cards.2.desc') },
+    { icon: <Leaf size={30} className="icon-premium" />, title: t('about.cards.0.title'), desc: t('about.cards.0.desc') },
+    { icon: <Shield size={30} className="icon-premium" />, title: t('about.cards.1.title'), desc: t('about.cards.1.desc') },
+    { icon: <Users size={30} className="icon-premium" />, title: t('about.cards.2.title'), desc: t('about.cards.2.desc') },
   ];
 
   return (

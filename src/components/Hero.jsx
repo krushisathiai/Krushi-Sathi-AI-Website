@@ -36,21 +36,21 @@ export default function Hero() {
 
           <div className="hero__stats">
             <div className="hero__stat">
-              <ShieldCheck size={24} className="hero__stat-icon" />
+              <ShieldCheck size={24} className="hero__stat-icon icon-premium" />
               <div>
                 <strong>50K+</strong>
                 <span>{t('hero.stats.farmers')}</span>
               </div>
             </div>
             <div className="hero__stat">
-              <Activity size={24} className="hero__stat-icon" />
+              <Activity size={24} className="hero__stat-icon icon-premium" />
               <div>
                 <strong>98%</strong>
                 <span>{t('hero.stats.accuracy')}</span>
               </div>
             </div>
             <div className="hero__stat">
-              <Leaf size={24} className="hero__stat-icon" />
+              <Leaf size={24} className="hero__stat-icon icon-premium" />
               <div>
                 <strong>30+</strong>
                 <span>{t('hero.stats.crops')}</span>

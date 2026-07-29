@@ -241,8 +241,19 @@ a:focus-visible {
   position: relative;
   overflow: hidden;
   letter-spacing: 0.2px;
-  /* Ensure icon + text stay vertically centred */
   vertical-align: middle;
+}
+
+/* ─── PREMIUM ICONS ────────────────────────────────────────────────────────── */
+.icon-premium {
+  stroke-width: 2.2px;
+  filter: drop-shadow(0 4px 10px currentColor);
+  transition: all 0.3s var(--bounce);
+}
+
+.icon-premium:hover {
+  filter: drop-shadow(0 6px 14px currentColor);
+  transform: scale(1.1) rotate(-3deg);
 }
 
 /* Shimmer sweep on hover */

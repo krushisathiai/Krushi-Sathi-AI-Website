@@ -114,9 +114,9 @@ export default function AppShowcase() {
               >
                 <div
                   className="showcase-stat-card__icon"
-                  style={{ background: s.bg, color: s.color }}
+                  style={{ color: s.color, background: s.bg, borderColor: s.border }}
                 >
-                  <Icon size={22} />
+                  <Icon size={22} className="icon-premium" />
                 </div>
                 <div className="showcase-stat-card__value" style={{ color: s.color }}>
                   {s.value}

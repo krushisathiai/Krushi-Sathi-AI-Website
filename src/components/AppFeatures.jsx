@@ -87,7 +87,7 @@ function FeatureVisualCard({ feat, t }) {
         className="feature-card-visual__icon"
         style={{ background: feat.bg, borderColor: feat.border, color: feat.color }}
       >
-        <Icon size={28} />
+        <Icon size={28} className="icon-premium" />
       </div>
       <div className="feature-card-visual__title">{d.title}</div>
       <div className="feature-card-visual__sub">{d.desc}</div>
