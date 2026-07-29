@@ -8,19 +8,16 @@ const LANG_KEY = 'ks_lang_selected';
 const LANGUAGES = [
   {
     code: 'en',
-    flag: '🇬🇧',
     name: 'English',
     native: 'Continue in English',
   },
   {
     code: 'hi',
-    flag: '🇮🇳',
     name: 'हिंदी',
     native: 'हिंदी में जारी रखें',
   },
   {
     code: 'mr',
-    flag: '🌾',
     name: 'मराठी',
     native: 'मराठीत सुरू ठेवा',
   },
@@ -82,7 +79,6 @@ export default function LangWelcomeModal() {
               className={`lang-modal__opt ${selected === lang.code ? 'selected' : ''}`}
               onClick={() => setSelected(lang.code)}
             >
-              <span className="lang-modal__opt-flag">{lang.flag}</span>
               <span className="lang-modal__opt-info">
                 <span className="lang-modal__opt-name">{lang.name}</span>
                 <span className="lang-modal__opt-native">{lang.native}</span>
