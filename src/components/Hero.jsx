@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Leaf, Activity } from 'lucide-react';
+import { ShieldCheck, Leaf, Activity, Download, ChevronRight } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import './Hero.css';
 
@@ -24,8 +24,14 @@ export default function Hero() {
           <p className="hero__desc">{t('hero.desc')}</p>
           
           <div className="hero__actions">
-            <button className="btn btn-primary">{t('hero.downloadBtn')}</button>
-            <button className="btn btn-outline">{t('hero.learnBtn')}</button>
+            <button className="btn btn-primary btn-glow">
+              <Download size={17} />
+              {t('hero.downloadBtn')}
+            </button>
+            <button className="btn btn-outline">
+              {t('hero.learnBtn')}
+              <ChevronRight size={17} />
+            </button>
           </div>
 
           <div className="hero__stats">

@@ -1,7 +1,7 @@
 /* ─── HERO SECTION ─────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  padding: 160px 0 100px;
+  padding: calc(var(--navbar-h) + 80px) 0 100px;
   overflow: hidden;
   background: radial-gradient(circle at top right, var(--bg-3), var(--bg-base) 60%);
 }

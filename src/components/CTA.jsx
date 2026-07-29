@@ -20,7 +20,7 @@ export default function CTA() {
             <h2 className="cta-title">{t('cta.title')}</h2>
             <p className="cta-desc">{t('cta.desc')}</p>
             <div className="cta-actions">
-              <button className="btn btn-primary cta-btn">
+              <button className="btn btn-primary btn-glow cta-btn">
                 <Download size={20} />
                 {t('cta.btn1')}
               </button>
