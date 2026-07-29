@@ -373,11 +373,8 @@ export default function Chatbot() {
           onClick={() => setIsOpen(true)}
           aria-label="Open AI Farming Chatbot"
         >
-          <div className="chatbot-trigger__badge">
-            <span className="dot"></span> Krushi AI
-          </div>
           <div className="chatbot-trigger__icon">
-            <Bot size={26} />
+            <Bot size={28} />
             <Sparkles size={14} className="sparkle-icon" />
           </div>
         </button>
