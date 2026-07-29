@@ -139,19 +139,19 @@ export default function Navbar() {
                   className={i18n.language === 'en' ? 'active' : ''}
                   onClick={() => changeLanguage('en')}
                 >
-                  🇬🇧 English
+                  English
                 </button>
                 <button
                   className={i18n.language === 'hi' ? 'active' : ''}
                   onClick={() => changeLanguage('hi')}
                 >
-                  🇮🇳 हिंदी
+                  हिंदी
                 </button>
                 <button
                   className={i18n.language === 'mr' ? 'active' : ''}
                   onClick={() => changeLanguage('mr')}
                 >
-                  🌾 मराठी
+                  मराठी
                 </button>
               </div>
             )}
