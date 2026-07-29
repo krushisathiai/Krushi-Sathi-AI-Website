@@ -164,21 +164,6 @@
   transform: scale(1.08) rotate(-4deg);
 }
 
-.feature-card-visual__title {
-  font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text-1);
-  margin-bottom: 8px;
-}
-
-.feature-card-visual__sub {
-  font-size: 13px;
-  color: var(--text-sub);
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
 /* ─── STATS ROW ────────────────────────────────────────────────────────────── */
 .feature-card-visual__stats {
   display: grid;

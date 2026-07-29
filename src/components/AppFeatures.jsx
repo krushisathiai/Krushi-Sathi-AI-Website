@@ -89,8 +89,6 @@ function FeatureVisualCard({ feat, t }) {
       >
         <Icon size={28} className="icon-premium" />
       </div>
-      <div className="feature-card-visual__title">{d.title}</div>
-      <div className="feature-card-visual__sub">{d.desc}</div>
 
       {/* Mini mockup bars */}
       <div className="feature-mock">
