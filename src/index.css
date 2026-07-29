@@ -70,7 +70,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  overflow-x: hidden;
 }
 
 body {
@@ -78,7 +77,6 @@ body {
   background-color: var(--bg-base);
   color: var(--text-1);
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -86,6 +84,8 @@ body {
 #root {
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 img {
