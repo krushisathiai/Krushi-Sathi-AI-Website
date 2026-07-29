@@ -162,13 +162,38 @@
 }
 
 .navbar__btn {
-  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 20px;
   border-radius: 50px;
   font-size: 14px;
   font-weight: 600;
   font-family: var(--font-heading);
   transition: all 0.3s var(--bounce);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar__btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.navbar__btn:hover::before {
+  left: 150%;
+}
+
+.navbar__btn:active {
+  transform: scale(0.97);
 }
 
 .navbar__btn--primary {
@@ -304,6 +329,10 @@
 }
 
 .navbar__mobile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 14px 20px;
   border-radius: 50px;
   font-size: 15px;
@@ -311,6 +340,8 @@
   font-family: var(--font-heading);
   text-align: center;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .navbar__mobile-btn--primary {
@@ -380,11 +411,21 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .lang-dropdown button:hover {
   background: var(--primary-glow);
   color: var(--primary-light);
+}
+
+/* Highlight selected language in dropdown */
+.lang-dropdown button.active {
+  color: var(--primary);
+  background: var(--primary-glow);
+  font-weight: 700;
 }
 
 /* ─── MOBILE LANGUAGE SWITCHER ─────────────────────────────────────────────── */

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Globe } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Globe, Download } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import './Navbar.css';
 
@@ -59,7 +59,19 @@ export default function Navbar() {
 
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
+
+    // Close lang dropdown on click-outside
+    const closeLang = (e) => {
+      if (!e.target.closest('.lang-switcher')) {
+        setLangMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', closeLang);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('mousedown', closeLang);
+    };
   }, [location.pathname]);
 
   const handleNavClick = (href) => {
@@ -81,6 +93,8 @@ export default function Navbar() {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    // Persist so it survives page refresh and stays in sync with LangWelcomeModal
+    localStorage.setItem('ks_lang_selected', lng);
     setLangMenuOpen(false);
     setMenuOpen(false);
   };
@@ -121,14 +135,33 @@ export default function Navbar() {
             </button>
             {langMenuOpen && (
               <div className="lang-dropdown">
-                <button onClick={() => changeLanguage('en')}>English</button>
-                <button onClick={() => changeLanguage('hi')}>हिंदी</button>
-                <button onClick={() => changeLanguage('mr')}>मराठी</button>
+                <button
+                  className={i18n.language === 'en' ? 'active' : ''}
+                  onClick={() => changeLanguage('en')}
+                >
+                  🇬🇧 English
+                </button>
+                <button
+                  className={i18n.language === 'hi' ? 'active' : ''}
+                  onClick={() => changeLanguage('hi')}
+                >
+                  🇮🇳 हिंदी
+                </button>
+                <button
+                  className={i18n.language === 'mr' ? 'active' : ''}
+                  onClick={() => changeLanguage('mr')}
+                >
+                  🌾 मराठी
+                </button>
               </div>
             )}
           </div>
 
-          <button className="navbar__btn navbar__btn--primary" onClick={() => handleNavClick('#download')}>
+          <button
+            className="navbar__btn navbar__btn--primary"
+            onClick={() => handleNavClick('#download')}
+          >
+            <Download size={15} />
             {t('nav.download')}
           </button>
         </div>
@@ -167,7 +200,13 @@ export default function Navbar() {
         </div>
 
         <div className="navbar__mobile-btns">
-          <button className="navbar__mobile-btn navbar__mobile-btn--primary">{t('nav.download')}</button>
+          <button
+            className="navbar__mobile-btn navbar__mobile-btn--primary"
+            onClick={() => handleNavClick('#download')}
+          >
+            <Download size={16} />
+            {t('nav.download')}
+          </button>
         </div>
       </div>
     </nav>
