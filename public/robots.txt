@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://krushisathi.com/sitemap.xml
+Sitemap: https://krushisathiai.in/sitemap.xml
