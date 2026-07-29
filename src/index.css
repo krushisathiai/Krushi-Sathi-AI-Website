@@ -107,6 +107,7 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  background: transparent;
   font-family: var(--font-body);
 }
 
