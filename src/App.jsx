@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
-import LangWelcomeModal from './components/LangWelcomeModal';
 import Home from './pages/Home';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
@@ -22,8 +21,6 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      {/* First-time language selection modal — shown once per device */}
-      <LangWelcomeModal />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
