@@ -259,6 +259,7 @@
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  padding-right: 80px; /* Prevent overlap with fixed chatbot button */
 }
 
 .footer__social {
@@ -331,6 +332,7 @@
   }
   .footer__socials {
     justify-content: center;
+    padding-right: 0;
   }
   .footer {
     padding: 48px 0 28px;
