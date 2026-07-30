@@ -83,9 +83,18 @@ export default function Footer() {
         <div className="footer__bottom">
           <p className="footer__copy">&copy; {new Date().getFullYear()} {t('footer.copy')}</p>
           
-          <div className="footer__visitor-count">
-            <Users size={16} className="visitor-icon" /> 
-            <span>Total Visitors: <strong>{visitorCount !== null ? visitorCount.toLocaleString() : '...'}</strong></span>
+          <div className="footer__visitor-card">
+            <div className="footer__visitor-header">
+              <div className="pulse-dot"></div>
+              <span>Live Analytics</span>
+            </div>
+            <div className="footer__visitor-value">
+              <Users size={24} className="visitor-icon" />
+              <span className="visitor-number">
+                {visitorCount !== null ? visitorCount.toLocaleString() : '...'}
+              </span>
+            </div>
+            <div className="footer__visitor-label">Total Unique Visitors</div>
           </div>
 
           <div className="footer__socials">
