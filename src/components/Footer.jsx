@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Globe, Mail, Phone, MapPin, Send, Users, Instagram } from 'lucide-react';
+import { Phone, Send, Users, Instagram, Facebook, Linkedin, MessageCircle } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import './Footer.css';
 
@@ -94,9 +94,10 @@ export default function Footer() {
 
           <div className="footer__socials">
             <a href="https://www.instagram.com/krushisathiai?igsh=MTFtZGlhdjNnMDZ4cg==" target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="Instagram"><Instagram size={18} /></a>
-            <a href="mailto:info@krushisathi.com" className="footer__social" aria-label="Email"><Mail size={18} /></a>
+            <a href="https://www.facebook.com/krushisathiai" target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="Facebook"><Facebook size={18} /></a>
+            <a href="https://www.linkedin.com/in/krushi-sathi-915310426" target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="LinkedIn"><Linkedin size={18} /></a>
+            <a href="https://wa.me/917498589218" target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="WhatsApp"><MessageCircle size={18} /></a>
             <a href="tel:7498589218" className="footer__social" aria-label="Phone"><Phone size={18} /></a>
-            <a href="#" className="footer__social" aria-label="Location"><MapPin size={18} /></a>
           </div>
         </div>
       </div>
