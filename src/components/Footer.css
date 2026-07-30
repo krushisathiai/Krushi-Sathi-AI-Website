@@ -210,6 +210,33 @@
   line-height: 1.5;
 }
 
+.footer__visitor-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(30, 215, 96, 0.05);
+  border: 1px solid rgba(30, 215, 96, 0.15);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--primary-light);
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.footer__visitor-count:hover {
+  background: rgba(30, 215, 96, 0.1);
+  border-color: rgba(30, 215, 96, 0.3);
+}
+
+.footer__visitor-count strong {
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
 .footer__socials {
   display: flex;
   gap: 12px;

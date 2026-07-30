@@ -1,11 +1,38 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Globe, Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Globe, Mail, Phone, MapPin, Send, Users } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import './Footer.css';
 
 export default function Footer() {
   const { t } = useTranslation();
+  const [visitorCount, setVisitorCount] = useState(null);
+
+  useEffect(() => {
+    const fetchVisitorCount = async () => {
+      try {
+        const hasVisited = localStorage.getItem('ks_visited_v1');
+        const endpoint = hasVisited 
+          ? 'https://api.counterapi.dev/v1/krushisathiai/visits' 
+          : 'https://api.counterapi.dev/v1/krushisathiai/visits/up';
+          
+        const res = await fetch(endpoint);
+        const data = await res.json();
+        
+        if (data && data.count) {
+          setVisitorCount(data.count);
+          if (!hasVisited) {
+            localStorage.setItem('ks_visited_v1', 'true');
+          }
+        }
+      } catch (error) {
+        console.error('Failed to fetch visitor count:', error);
+      }
+    };
+    
+    fetchVisitorCount();
+  }, []);
 
   return (
     <footer className="footer">
@@ -53,6 +80,12 @@ export default function Footer() {
 
         <div className="footer__bottom">
           <p className="footer__copy">&copy; {new Date().getFullYear()} {t('footer.copy')}</p>
+          
+          <div className="footer__visitor-count">
+            <Users size={16} className="visitor-icon" /> 
+            <span>Total Visitors: <strong>{visitorCount !== null ? visitorCount.toLocaleString() : '...'}</strong></span>
+          </div>
+
           <div className="footer__socials">
             <a href="#" className="footer__social" aria-label="Website"><Globe size={18} /></a>
             <a href="#" className="footer__social" aria-label="Email"><Mail size={18} /></a>
