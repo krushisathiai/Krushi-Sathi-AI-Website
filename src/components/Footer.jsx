@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Globe, Mail, Phone, MapPin, Send, Users } from 'lucide-react';
+import { Globe, Mail, Phone, MapPin, Send, Users, Instagram } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 import './Footer.css';
 
@@ -93,9 +93,9 @@ export default function Footer() {
           </div>
 
           <div className="footer__socials">
-            <a href="#" className="footer__social" aria-label="Website"><Globe size={18} /></a>
-            <a href="#" className="footer__social" aria-label="Email"><Mail size={18} /></a>
-            <a href="#" className="footer__social" aria-label="Phone"><Phone size={18} /></a>
+            <a href="https://www.instagram.com/krushisathiai?igsh=MTFtZGlhdjNnMDZ4cg==" target="_blank" rel="noopener noreferrer" className="footer__social" aria-label="Instagram"><Instagram size={18} /></a>
+            <a href="mailto:info@krushisathi.com" className="footer__social" aria-label="Email"><Mail size={18} /></a>
+            <a href="tel:7498589218" className="footer__social" aria-label="Phone"><Phone size={18} /></a>
             <a href="#" className="footer__social" aria-label="Location"><MapPin size={18} /></a>
           </div>
         </div>
