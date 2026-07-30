@@ -12,18 +12,20 @@ export default function Footer() {
   useEffect(() => {
     const fetchVisitorCount = async () => {
       try {
-        const hasVisited = localStorage.getItem('ks_visited_v1');
+        const hasVisited = localStorage.getItem('ks_visited_v2');
+        const baseUrl = import.meta.env.VITE_API_URL || 'https://krushisathi-backend.onrender.com';
+        
         const endpoint = hasVisited 
-          ? 'https://api.counterapi.dev/v1/krushisathiai/visits' 
-          : 'https://api.counterapi.dev/v1/krushisathiai/visits/up';
+          ? `${baseUrl}/api/visits` 
+          : `${baseUrl}/api/visits?increment=true`;
           
         const res = await fetch(endpoint);
         const data = await res.json();
         
-        if (data && data.count) {
+        if (data && data.success && data.count !== undefined) {
           setVisitorCount(data.count);
           if (!hasVisited) {
-            localStorage.setItem('ks_visited_v1', 'true');
+            localStorage.setItem('ks_visited_v2', 'true');
           }
         }
       } catch (error) {
