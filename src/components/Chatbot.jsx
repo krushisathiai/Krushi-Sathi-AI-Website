@@ -7,7 +7,7 @@ import {
   Sparkles, 
   Trash2, 
   ChevronRight, 
-  MessageSquareText
+  Headset
 } from 'lucide-react';
 import './Chatbot.css';
 
@@ -375,8 +375,7 @@ export default function Chatbot() {
           aria-label="Open AI Farming Chatbot"
         >
           <div className="chatbot-trigger__inner">
-            <MessageSquareText size={28} className="chatbot-trigger__icon-main" />
-            <Sparkles size={14} className="sparkle-icon" />
+            <Headset size={28} className="chatbot-trigger__icon-main" />
           </div>
         </button>
       )}
