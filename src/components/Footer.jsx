@@ -9,6 +9,7 @@ import './Footer.css';
 export default function Footer() {
   const { t } = useTranslation();
   const [visitorCount, setVisitorCount] = useState(null);
+  const [displayCount, setDisplayCount] = useState(1);
 
   useEffect(() => {
     const fetchVisitorCount = async () => {
@@ -36,6 +37,34 @@ export default function Footer() {
     
     fetchVisitorCount();
   }, []);
+
+  useEffect(() => {
+    if (visitorCount === null) return;
+    
+    let start = 1;
+    const end = visitorCount;
+    if (start >= end) {
+      setDisplayCount(end);
+      return;
+    }
+    
+    const duration = 2000;
+    const incrementTime = 30;
+    const steps = duration / incrementTime;
+    const increment = Math.ceil((end - start) / steps);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setDisplayCount(end);
+        clearInterval(timer);
+      } else {
+        setDisplayCount(start);
+      }
+    }, incrementTime);
+    
+    return () => clearInterval(timer);
+  }, [visitorCount]);
 
   return (
     <footer className="footer">
@@ -89,7 +118,7 @@ export default function Footer() {
             <Users size={14} className="visitor-icon-small" />
             <span className="visitor-text">Total Visitors:</span>
             <span className="visitor-number-small">
-              {visitorCount !== null ? visitorCount.toLocaleString() : '...'}
+              {visitorCount !== null ? displayCount.toLocaleString() : '...'}
             </span>
           </div>
 
