@@ -32,24 +32,57 @@
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
     <link rel="apple-touch-icon" href="/favicon-192.png">
     
-    <!-- Structured Data (JSON-LD) for Google Rich Snippets -->
+    <!-- Structured Data (JSON-LD) for Google Rich Snippets & AI Overviews -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Krushi Sathi AI",
-        "operatingSystem": "Android",
-        "applicationCategory": "AgriApplication",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "INR"
-        },
-        "description": "An AI-powered farming assistant app for crop disease detection, fertilizer calculation, and expert agricultural advice.",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Krushi Sathi"
-        }
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "Krushi Sathi AI",
+            "alternateName": "Krishi Saathi",
+            "operatingSystem": "Android",
+            "applicationCategory": "AgriApplication",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "INR"
+            },
+            "description": "An AI-powered agricultural advisory platform designed to help farmers and advisors with real-time weather data, crop disease detection, local market prices, and expert advice.",
+            "publisher": {
+              "@id": "https://krushisathiai.in/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://krushisathiai.in/#organization",
+            "name": "Krushi Sathi",
+            "url": "https://krushisathiai.in/",
+            "logo": "https://krushisathiai.in/logo.png",
+            "description": "Krushi Sathi is India's #1 AI farming assistant providing smart agricultural solutions to farmers."
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Krushi Sathi (or Krishi Saathi)?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Krushi Sathi is an AI-powered agricultural advisory platform designed to help farmers and advisors with real-time weather data, crop disease detection, and local market prices."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are the key features of Krushi Sathi AI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Key features include AI Crop Doctor to detect pests and diseases instantly, and a Multilingual Chatbot for farming questions in regional languages."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
