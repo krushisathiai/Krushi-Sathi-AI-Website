@@ -21,6 +21,26 @@ const checkIconStyle = {
   marginTop: '2px',
 };
 
+const pricingSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Krushi Sathi AI Pro",
+  "alternateName": "Krushi Sathi Premium",
+  "description": "Premium agricultural features including unlimited AI crop scans, fertilizer calculators, and expert voice/video consultations for farmers.",
+  "brand": {
+    "@type": "Brand",
+    "name": "Krushi Sathi"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://krushisathiai.in/pricing",
+    "priceCurrency": "INR",
+    "price": "149",
+    "priceValidUntil": "2027-12-31",
+    "availability": "https://schema.org/InStock"
+  }
+};
+
 export default function Pricing() {
   const { t } = useTranslation();
 
@@ -30,6 +50,7 @@ export default function Pricing() {
         title="Pricing" 
         description="Choose the right Krushi Sathi plan for your farming needs. Free basic features and premium Pro features available."
         url="/pricing"
+        schema={pricingSchema}
       />
       <div className="container page-inner">
         <motion.div

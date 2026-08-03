@@ -26,10 +26,28 @@ const labelStyle = {
 };
 
 const contactInfoItems = [
-  { icon: <Mail size={22} />, title: 'Email', detail: 'support@krushisathi.com' },
+  { icon: <Mail size={22} />, title: 'Email', detail: 'support@krushisathiai.in' },
   { icon: <Phone size={22} />, title: 'Phone', detail: '+91 98765 43210' },
   { icon: <MapPin size={22} />, title: 'Office', detail: 'Pune, Maharashtra, India' },
 ];
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact Krushi Sathi",
+  "description": "Contact Krushi Sathi for agriculture app support, farming queries, and expert advice.",
+  "url": "https://krushisathiai.in/contact",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Krushi Sathi AI",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@krushisathiai.in",
+      "telephone": "+91 98765 43210",
+      "contactType": "customer support"
+    }
+  }
+};
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -40,6 +58,7 @@ export default function Contact() {
         title="Contact Us" 
         description="Get in touch with the Krushi Sathi team for support, business inquiries, or general questions about our AI farming assistant."
         url="/contact"
+        schema={contactSchema}
       />
       <div className="container page-inner">
         <motion.div
