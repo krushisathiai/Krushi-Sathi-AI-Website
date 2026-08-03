@@ -14,6 +14,7 @@ export default function SEO({ title, description, type = 'website', url }) {
       <title>{currentTitle}</title>
       <meta name="title" content={currentTitle} />
       <meta name="description" content={currentDesc} />
+      <meta name="keywords" content="krushi, krushi sathi, krushi sathi ai, agriculture, agriculture app, farming, farming app, smart farming, kheti, sheti, kisan, farmer, crop disease detection, fertilizer calculator, kisan app, agri app india, krishi, shetkari, shetkari mitra, kisan suvidha, organic farming, agriculture technology, smart agriculture, Indian farming" />
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />
