@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const sectionStyle = {
   marginBottom: '32px',
@@ -25,6 +26,11 @@ export default function Terms() {
 
   return (
     <div className="page-wrapper">
+      <SEO 
+        title="Terms of Service" 
+        description="Read the terms and conditions for using Krushi Sathi AI services, app, and website."
+        url="/terms"
+      />
       <div className="container page-inner" style={{ maxWidth: '840px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}

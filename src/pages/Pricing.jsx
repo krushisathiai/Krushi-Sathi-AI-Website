@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const checkItemStyle = {
   display: 'flex',
@@ -25,6 +26,11 @@ export default function Pricing() {
 
   return (
     <div className="page-wrapper">
+      <SEO 
+        title="Pricing" 
+        description="Choose the right Krushi Sathi plan for your farming needs. Free basic features and premium Pro features available."
+        url="/pricing"
+      />
       <div className="container page-inner">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

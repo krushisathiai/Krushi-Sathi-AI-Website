@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const inputStyle = {
   width: '100%',
@@ -35,6 +36,11 @@ export default function Contact() {
 
   return (
     <div className="page-wrapper">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with the Krushi Sathi team for support, business inquiries, or general questions about our AI farming assistant."
+        url="/contact"
+      />
       <div className="container page-inner">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

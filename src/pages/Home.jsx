@@ -7,10 +7,12 @@ import Diseases from '../components/Diseases';
 import AppShowcase from '../components/AppShowcase';
 import Testimonials from '../components/Testimonials';
 import CTA from '../components/CTA';
+import SEO from '../components/SEO';
 
 export default function Home() {
   return (
     <main>
+      <SEO url="/" />
       <Hero />
       <AboutSection />
       <Features />

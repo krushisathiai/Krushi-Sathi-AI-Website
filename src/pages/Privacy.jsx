@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const sectionStyle = {
   marginBottom: '32px',
@@ -25,6 +26,11 @@ export default function Privacy() {
 
   return (
     <div className="page-wrapper">
+      <SEO 
+        title="Privacy Policy" 
+        description="Learn how Krushi Sathi protects your data and privacy. We are committed to securing our users' personal information."
+        url="/privacy"
+      />
       <div className="container page-inner" style={{ maxWidth: '840px', margin: '0 auto' }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
