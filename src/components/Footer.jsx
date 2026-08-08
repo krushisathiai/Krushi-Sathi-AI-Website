@@ -73,7 +73,7 @@ export default function Footer() {
           <div className="footer__brand">
             <div className="footer__logo">
               <img src={logoImg} alt="Krushi Sathi Logo" className="footer__logo-img" />
-              <span className="footer__logo-text">Krushi Sathi</span>
+              <span className="footer__logo-text">Krushi Sathi AI</span>
             </div>
             <p className="footer__desc">{t('footer.desc')}</p>
           </div>
